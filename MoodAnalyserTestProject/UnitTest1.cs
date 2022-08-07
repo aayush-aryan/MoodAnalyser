@@ -45,9 +45,12 @@ namespace MoodAnalyserTestProject
         [TestCategory("Happy Mood")]
         public void GivenMessageShouldPassThroughConstructorReturn_Happy()
         {
+            //Arrange
             AnalyzeMood analyzeMood = new AnalyzeMood("I am in Happy Mood");
             string excepted = "happy";
+            //Act
             var actual = analyzeMood.Mood();
+            ///Assert
             Assert.AreEqual(excepted, actual);
         }
         /// <summary>
@@ -60,6 +63,20 @@ namespace MoodAnalyserTestProject
         {
             AnalyzeMood analyzeMood = new AnalyzeMood("I am in SAD Mood");
             string excepted = "sad";
+            var actual = analyzeMood.Mood();
+            Assert.AreEqual(excepted, actual);
+        }
+        //UC2 testcase
+        [TestMethod]
+        [TestCategory("Null")]
+        [DataRow(null)]
+        // this will pass in method as a message body;
+        public void GivenNullShouldReturnHappy(string message)
+        {
+            ///Follow AAA strategy
+            ///Arrange , Act and in last Assert
+            AnalyzeMood analyzeMood = new AnalyzeMood(message);
+            string excepted = "happy";
             var actual = analyzeMood.Mood();
             Assert.AreEqual(excepted, actual);
         }

@@ -39,21 +39,31 @@ namespace MoodAnalyserConsoleApp
                 return "sad";
             }
         }
-        //UC1_Refactored
+        //UC2
         /// <summary>
-        /// refactored Mood
-        /// metod overloading
+        ///exception handeled for
+        ///passing null value returnd happy
+        ///Method to return the type of Mood
         /// </summary>
         /// <returns></returns>
         public string Mood()
         {
-            if (message.ToLower().Contains("happy"))
+
+            try
             {
-                return "happy";
+                if (message.ToLower().Contains("happy"))
+                {
+                    return "happy";
+                }
+                else
+                {
+                    return "sad";
+                }
             }
-            else
+            catch (NullReferenceException exception)
             {
-                return "sad";
+                Console.WriteLine(exception.Message);
+                return "happy";
             }
         }
     }
