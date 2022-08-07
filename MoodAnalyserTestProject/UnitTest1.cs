@@ -36,5 +36,32 @@ namespace MoodAnalyserTestProject
             var actual = analyzeMood.Mood(message);
             Assert.AreEqual(excepted, actual);
         }
+        /// <summary>
+        ///Follow AAA strategy
+        ///Arrange , Act and in last Assert
+        /// </summary>
+
+        [TestMethod]
+        [TestCategory("Happy Mood")]
+        public void GivenMessageShouldPassThroughConstructorReturn_Happy()
+        {
+            AnalyzeMood analyzeMood = new AnalyzeMood("I am in Happy Mood");
+            string excepted = "happy";
+            var actual = analyzeMood.Mood();
+            Assert.AreEqual(excepted, actual);
+        }
+        /// <summary>
+        ///Follow AAA strategy
+        ///Arrange , Act and in last Assert
+        /// </summary>
+        [TestMethod]
+        [TestCategory("SAD Mood")]
+        public void GivenMessageShoulPassThroughConstructorReturn_Sad()
+        {
+            AnalyzeMood analyzeMood = new AnalyzeMood("I am in SAD Mood");
+            string excepted = "sad";
+            var actual = analyzeMood.Mood();
+            Assert.AreEqual(excepted, actual);
+        }
     }
 }
