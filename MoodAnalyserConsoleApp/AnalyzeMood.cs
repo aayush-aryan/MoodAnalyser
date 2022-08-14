@@ -39,7 +39,7 @@ namespace MoodAnalyserConsoleApp
                 return "sad";
             }
         }
-        //UC2
+        //UC3
         /// <summary>
         ///exception handeled for
         ///passing null value returnd happy
@@ -48,23 +48,28 @@ namespace MoodAnalyserConsoleApp
         /// <returns></returns>
         public string Mood()
         {
-
             try
             {
                 if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
                 }
+                else if (message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyserCustomException(ExceptionType.EMPTY_EXCEPTION,"Message can't be Empty");
+                }
                 else
                 {
                     return "sad";
                 }
             }
-            catch (NullReferenceException exception)
+            catch (NullReferenceException)
             {
-                Console.WriteLine(exception.Message);
-                return "happy";
+                throw new MoodAnalyserCustomException(ExceptionType.NULL_EXCEPTION, "Message can't be Null");
+               // Console.WriteLine(exception.Message);
+               // return "happy";  
             }
         }
     }
 }
+  
