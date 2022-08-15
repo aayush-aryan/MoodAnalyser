@@ -69,54 +69,46 @@ namespace MoodAnalyserTestProject
             var actual = analyzeMood.Mood();
             Assert.AreEqual(excepted, actual);
         }
-        /*
-        //UC2 testcase
-        [TestMethod]
-        [TestCategory("Null")]
-        [DataRow(null)]
-        // this will pass in method as a message body;
-        public void GivenNullShouldReturnHappy(string message)
-        {
-            ///Follow AAA strategy
-            ///Arrange , Act anAssertd in last 
-            AnalyzeMood analyzeMood = new AnalyzeMood(message);
-            string excepted = "happy";
-            var actual = analyzeMood.Mood();
-            Assert.AreEqual(excepted, actual);
-        }
-        */
         /// <summary>
-        /// given message should throw moodAnalysisException
-        /// when passing message as Null;
+        /// TC-4.1 Returns the mood analyser object
         /// </summary>
         [TestMethod]
-        public void Given_Null_Mood_should_ThrowMoodAnalysisCustomException()
+        public void GivenMoodAnalyserReflection_ShouldReturnObject()
         {
+            object expected = new AnalyzeMood();
+            object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserConsoleApp.AnalyzeMood", "AnalyzeMood");
+            expected.Equals(actual);
+        }
+        /// <summary>
+        /// TC-4.2 should throw NO_SUCH_CLASS exception.
+        /// </summary>
+        [TestMethod]
+        public void GivenClassNameImproper_ShouldReturnMoodAnalysisException()
+        {
+            string expected = "Class not found";
             try
             {
-                string message = null;
-                AnalyzeMood analyzeMood = new AnalyzeMood(message);
-                string actual = analyzeMood.Mood();
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("Mood.AnalyzeMood", "AnalyzeMood");
             }
-            catch (MoodAnalyserCustomException moodAnalyserCustomException)
+            catch (MoodAnalyserCustomException exception)
             {
-                Assert.AreEqual("Message can't be Null", moodAnalyserCustomException.Message);//get a Message that describe current Exception
+                Assert.AreEqual(expected, exception.Message);
             }
         }
-
+        /// <summary>
+        /// TC-4.3 should throw NO_SUCH_CONTRUCTOR exception.
+        /// </summary>
         [TestMethod]
-        public void Given_Empty_Mood_should_ThrowMoodAnalysisCustomException()
+        public void GivenConstructorNameImproper_ShouldReturnMoodAnalysisException()
         {
+            string expected = "Constructor not found";
             try
             {
-                string message = "";
-                AnalyzeMood analyzeMood = new AnalyzeMood(message);
-                string actual = analyzeMood.Mood();
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzer.AnalyzeMood", "MoodAnalyzer");
             }
-            catch (MoodAnalyserCustomException moodAnalyserCustomException)
+            catch (MoodAnalyserCustomException exception)
             {
-                Assert.AreEqual("Message can't be Empty", moodAnalyserCustomException.Message);//get a Message that describe current Exception
-
+                Assert.AreEqual(expected, exception.Message);
             }
         }
     }
