@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace MoodAnalyserConsoleApp
 {
-   public class MoodAnalyzerFactory
+    public class MoodAnalyzerFactory
     {
         /// <summary>
         /// CreateMoodAnalyse method to create object of AnalyseMood class.
@@ -17,7 +17,7 @@ namespace MoodAnalyserConsoleApp
         public static object CreateMoodAnalyse(string className, string constructorName)  //"MoodAnalyserConsoleApp.AnalyzeMood", "AnalyzeMood"
         {
             // create the pattern and checks whether constructor name and class name are equal
-            string pattern = @"." + constructorName + "$";  
+            string pattern = @"." + constructorName + "$";
             Match result = Regex.Match(className, pattern);
             // if true then create object.
             if (result.Success)
@@ -40,6 +40,5 @@ namespace MoodAnalyserConsoleApp
                 throw new MoodAnalyserCustomException(ExceptionType.NO_SUCH_CONSTRUCTOR, "Constructor not found");
             }
         }
-       
     }
 }

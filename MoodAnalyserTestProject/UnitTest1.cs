@@ -10,7 +10,6 @@ namespace MoodAnalyserTestProject
         /// Follow AAA strategy
         /// Arrange , Act and in last Assert
         /// </summary>
-
         [TestMethod]
         [TestCategory("Happy Mood")]
         public void GivenMessageShouldReturnHappy()
@@ -28,7 +27,6 @@ namespace MoodAnalyserTestProject
         /// Follow AAA strategy
         /// Arrange , Act and in last Assert
         /// </summary>
-
         [TestMethod]
         [TestCategory("SAD Mood")]
         public void GivenMessageShouldReturnSad()
@@ -43,7 +41,6 @@ namespace MoodAnalyserTestProject
         ///Follow AAA strategy
         ///Arrange , Act and in last Assert
         /// </summary>
-
         [TestMethod]
         [TestCategory("Happy Mood")]
         public void GivenMessageShouldPassThroughConstructorReturn_Happy()
@@ -83,12 +80,12 @@ namespace MoodAnalyserTestProject
         /// TC-4.2 should throw NO_SUCH_CLASS exception.
         /// </summary>
         [TestMethod]
-        public void GivenClassNameImproper_ShouldReturnMoodAnalysisException()
+        public void GivenClassNameIsImproper_ShouldReturnMoodAnalysisException()
         {
             string expected = "Class not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserConsoleApp.AnalyzeMood", "AnalyzeMood");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserWrong.AnalyzeMood", "AnalyzeMood");
             }
             catch (MoodAnalyserCustomException exception)
             {
@@ -104,7 +101,7 @@ namespace MoodAnalyserTestProject
             string expected = "Constructor not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserConsoleApp.AnalyzeMood", "MoodAnalyzer");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserConsoleApp.AnalyzeMood", "AnalyzeMoodWrong");
             }
             catch (MoodAnalyserCustomException exception)
             {
