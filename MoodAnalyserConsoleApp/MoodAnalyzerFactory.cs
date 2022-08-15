@@ -40,6 +40,6 @@ namespace MoodAnalyserConsoleApp
                 throw new MoodAnalyserCustomException(ExceptionType.NO_SUCH_CONSTRUCTOR, "Constructor not found");
             }
         }
-                
+       
     }
 }

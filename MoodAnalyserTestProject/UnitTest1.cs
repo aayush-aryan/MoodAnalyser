@@ -88,7 +88,7 @@ namespace MoodAnalyserTestProject
             string expected = "Class not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("Mood.AnalyzeMood", "AnalyzeMood");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserConsoleApp.AnalyzeMood", "AnalyzeMood");
             }
             catch (MoodAnalyserCustomException exception)
             {
@@ -104,7 +104,7 @@ namespace MoodAnalyserTestProject
             string expected = "Constructor not found";
             try
             {
-                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyzer.AnalyzeMood", "MoodAnalyzer");
+                object actual = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserConsoleApp.AnalyzeMood", "MoodAnalyzer");
             }
             catch (MoodAnalyserCustomException exception)
             {
