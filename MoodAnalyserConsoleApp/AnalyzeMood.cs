@@ -28,6 +28,7 @@ namespace MoodAnalyserConsoleApp
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
+        /*
         public string Mood(string message)
         {
             if (message.ToLower().Contains("happy"))
@@ -39,6 +40,7 @@ namespace MoodAnalyserConsoleApp
                 return "sad";
             }
         }
+        */
         //UC4
         /// <summary>
         ///exception handeled for
