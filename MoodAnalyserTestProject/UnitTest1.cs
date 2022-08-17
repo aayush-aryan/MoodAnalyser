@@ -136,7 +136,7 @@ namespace MoodAnalyserTestProject
                 object actual = MoodAnalyzerFactory.CreateMoodAnalyserParameterizedConstructor("MoodAnalyserWrongClassqualifiedName.AnalyzeMood", "AnalyzeMood", "I am Parameter constructor");
             }
             catch (MoodAnalyserCustomException exception)
-            {  
+            {
                 Assert.AreEqual(expected, exception.Message);
             }
         }

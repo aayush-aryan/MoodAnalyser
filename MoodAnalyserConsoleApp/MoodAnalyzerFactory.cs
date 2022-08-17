@@ -83,7 +83,7 @@ namespace MoodAnalyserConsoleApp
             }
         }
         /// <summary>
-        /// 
+        /// using optional parameter in Method;
         /// </summary>
         /// <param name="className"></param>
         /// <param name="constructorName"></param>
@@ -116,6 +116,28 @@ namespace MoodAnalyserConsoleApp
             catch (Exception exception)
             {
                 return exception;
+            }
+        }
+        /// <summary>
+        /// uc6
+        /// Method to Invoke AnalyzeMood method which is 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        public static string InvokeAnalyseMood(string message, string methodName)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyserConsoleApp.MoodAnalyser");
+                object moodAnalyseObject = MoodAnalyzerFactory.CreateMoodAnalyserParameterizedConstructor("MoodAnalyserConsoleApp.AnalyzeMood", "AnalyzeMood", message);
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                object mood = methodInfo.Invoke(moodAnalyseObject, null); // invoking Method represented by Current Instance(moodAnalyseObject);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserCustomException(ExceptionType.NO_SUCH_METHOD, "No method found");
             }
         }
     }

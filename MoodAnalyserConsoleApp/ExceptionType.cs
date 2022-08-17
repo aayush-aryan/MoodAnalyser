@@ -10,6 +10,7 @@ namespace MoodAnalyserConsoleApp
         EMPTY_EXCEPTION,
         NO_SUCH_CLASS,
         NO_SUCH_CONSTRUCTOR,
-        OBJECT_CREATION_ISSUE
+        OBJECT_CREATION_ISSUE,
+        NO_SUCH_METHOD
     }
 }
